@@ -73,3 +73,35 @@ func TestJoin(t *testing.T) {
 		t.Errorf("Expected value: %v \n Returned value: %v", expected, result)
 	}
 }
+
+func TestIncludes(t *testing.T) {
+	b := Goarray{1, 2, 3, 4, 5}
+
+	result := b.Includes(2)
+
+	if !result {
+		t.Errorf("Expected value: %t \n Returned value: %t", true, result)
+	}
+
+	result = b.Includes(20)
+
+	if result {
+		t.Errorf("Expected value: %t \n Returned value: %t", false, result)
+	}
+}
+
+func TestIndexOf(t *testing.T) {
+	b := Goarray{1, 2, 3, 4, 5}
+
+	result := b.IndexOf(2)
+	expect := 1
+	if expect != result {
+		t.Errorf("Expected value: %d \n Returned value: %d", expect, result)
+	}
+
+	result = b.IndexOf(20)
+	expect = -1
+	if expect != result {
+		t.Errorf("Expected value: %d \n Returned value: %d", expect, result)
+	}
+}
