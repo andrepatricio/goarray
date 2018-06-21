@@ -62,3 +62,14 @@ func TestMap(t *testing.T) {
 		t.Errorf("Expected value: %v \n Returned value: %v", expected, result)
 	}
 }
+
+func TestJoin(t *testing.T) {
+	b := Goarray{1, 2, 3, 4, 5}
+
+	result := b.Join(",")
+
+	expected := "1,2,3,4,5"
+	if result != expected {
+		t.Errorf("Expected value: %v \n Returned value: %v", expected, result)
+	}
+}

@@ -1,5 +1,9 @@
 package goarray
 
+import (
+	"fmt"
+)
+
 type Goarray []int
 
 func (g *Goarray) Equals(b Goarray) bool {
@@ -26,6 +30,18 @@ func (g *Goarray) Filter(c func(a int) bool) (result Goarray) {
 func (g *Goarray) Map(funcao func(a int) int) (result Goarray) {
 	for _, elem := range *g {
 		result = append(result, funcao(elem))
+	}
+	return
+}
+
+func (g *Goarray) Join(s string) (result string) {
+	for n, elem := range *g {
+		switch {
+		case n == len(*g)-1:
+			result += fmt.Sprintf("%d", elem)
+		default:
+			result += fmt.Sprintf("%d%s", elem, s)
+		}
 	}
 	return
 }
