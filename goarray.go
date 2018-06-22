@@ -68,3 +68,24 @@ func (g *Goarray) IndexOf(n int) int {
 	}
 	return -1
 }
+
+// Returns the last index at which a given element can be found in the array, or -1 if it is not present.
+func (g *Goarray) LastIndexOf(n int) int {
+	result := -1
+	for i, elem := range *g {
+		if n == elem {
+			result = i
+		}
+	}
+	return result
+}
+
+// Tests whether all elements in the array pass the test implemented by the provided function.
+func (g *Goarray) Every(test func(n int) bool) bool {
+	for _, elem := range *g {
+		if !test(elem) {
+			return false
+		}
+	}
+	return true
+}

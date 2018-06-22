@@ -105,3 +105,38 @@ func TestIndexOf(t *testing.T) {
 		t.Errorf("Expected value: %d \n Returned value: %d", expect, result)
 	}
 }
+
+func TestLastIndexOf(t *testing.T) {
+	b := Goarray{5, 3, 3, 4, 5}
+
+	result := b.LastIndexOf(3)
+	expect := 2
+	if expect != result {
+		t.Errorf("Expected value: %d \n Returned value: %d", expect, result)
+	}
+
+	result = b.IndexOf(20)
+	expect = -1
+	if expect != result {
+		t.Errorf("Expected value: %d \n Returned value: %d", expect, result)
+	}
+}
+
+func TestEvery(t *testing.T) {
+	b := Goarray{1, 2, 3, 4, 5}
+	result := b.Every(func(n int) bool {
+		return n < 20
+	})
+
+	if !result {
+		t.Errorf("Expected value: %t \n Returned value: %t", true, result)
+	}
+
+	result = b.Every(func(n int) bool {
+		return n < 0
+	})
+
+	if result {
+		t.Errorf("Expected value: %t \n Returned value: %t", false, result)
+	}
+}
