@@ -32,6 +32,13 @@ func TestEquals(t *testing.T) {
 	if b.Equals(a) {
 		t.Errorf("First array: %v \n Second array: %v \n The result cound't be true", a, b)
 	}
+
+	a = Goarray{1, 2, 3, 4, 5}
+	b = Goarray{5, 4, 3, 2, 1}
+
+	if b.Equals(a) {
+		t.Errorf("First array: %v \n Second array: %v \n The result cound't be true", a, b)
+	}
 }
 
 func TestFilter(t *testing.T) {
@@ -138,5 +145,15 @@ func TestEvery(t *testing.T) {
 
 	if result {
 		t.Errorf("Expected value: %t \n Returned value: %t", false, result)
+	}
+}
+
+func TestReverse(t *testing.T) {
+	b := Goarray{1, 2, 3, 4, 5}
+	expect := Goarray{5, 4, 3, 2, 1}
+	result := b.Reverse()
+	t.Logf("Resultado %v | Esperado %v", result, expect)
+	if !result.Equals(expect) {
+		t.Errorf("Expected value: %v \n Returned value: %v ", expect, result)
 	}
 }

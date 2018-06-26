@@ -49,7 +49,8 @@ func (g *Goarray) Join(s string) (result string) {
 	return
 }
 
-// Determines whether an array includes a certain element, returning true or false as appropriate.
+// Determines whether an array includes a certain element,
+// returning true or false as appropriate.
 func (g *Goarray) Includes(n int) bool {
 	for _, elem := range *g {
 		if elem == n {
@@ -59,7 +60,8 @@ func (g *Goarray) Includes(n int) bool {
 	return false
 }
 
-// Returns the first index at which a given element can be found in the array, or -1 if it is not present.
+// Returns the first index at which a given element can be found in the array,
+// or -1 if it is not present.
 func (g *Goarray) IndexOf(n int) int {
 	for i, elem := range *g {
 		if n == elem {
@@ -69,7 +71,8 @@ func (g *Goarray) IndexOf(n int) int {
 	return -1
 }
 
-// Returns the last index at which a given element can be found in the array, or -1 if it is not present.
+// Returns the last index at which a given element can be found in the array,
+// or -1 if it is not present.
 func (g *Goarray) LastIndexOf(n int) int {
 	result := -1
 	for i, elem := range *g {
@@ -80,7 +83,8 @@ func (g *Goarray) LastIndexOf(n int) int {
 	return result
 }
 
-// Tests whether all elements in the array pass the test implemented by the provided function.
+// Tests whether all elements in the array pass
+// the test implemented by the provided function.
 func (g *Goarray) Every(test func(n int) bool) bool {
 	for _, elem := range *g {
 		if !test(elem) {
@@ -88,4 +92,13 @@ func (g *Goarray) Every(test func(n int) bool) bool {
 		}
 	}
 	return true
+}
+
+// Method reverses an array. Return a new array without change the first one
+func (g *Goarray) Reverse() Goarray {
+	gr := make(Goarray, len(*g))
+	for n, elem := range *g {
+		gr[(len(*g)-1)-n] = elem
+	}
+	return gr
 }
